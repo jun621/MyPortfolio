@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Junichi Koizumi - Portfolio</title>
+    <title>Junichi Koizumi - Portfolio</title>
     <link rel="stylesheet" href="./style.css"/>
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script type="text/javascript">
-      (function(){
-        emailjs.init("nlxpgQqCpfN2MOxB7"); // Replace with your EmailJS api key 
-      })();
-    </script>
-    <script>
-      function sendEmail(e) {
+    <script type="module">
+      import { init, send } from '@emailjs/browser';
+
+      init("nlxpgQqCpfN2MOxB7");
+
+      window.sendEmail = function(e) {
         e.preventDefault();
-        
         const templateParams = {
           from_name: document.getElementById('senderName').value || 'Anonymous',
           from_email: document.getElementById('senderEmail').value || 'No email provided',
           message: document.getElementById('message').value
         };
         
-        emailjs.send('service_0cfy4ek', 'template_ycr633p', templateParams)
+        send('service_0cfy4ek', 'template_ycr633p', templateParams)
         .then(function(response) {
           console.log('SUCCESS!', response.status, response.text);
           const popup = document.getElementById('popup');
@@ -29,11 +26,11 @@
           console.log('FAILED...', error);
         });
         
-        // Clear the form
         document.getElementById('recommendationForm').reset();
-      }
+      };
     </script>
 </head>
+
 <body style = "background-color:darkseagreen">
 <!-- Navigation Bar -->
 <nav>
