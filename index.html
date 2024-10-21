@@ -197,20 +197,19 @@
 </section>
 <div style="clear:both;"></div>
 
-
-
 <!-- Recommendation Form -->
 <section id="contact">
-    <div class="flex_center">
+    <form id="recommendationForm" class="flex_center" onsubmit="sendEmail(event)">
         <fieldset>
             <legend class="introduction">Leave a Recommendation</legend>
-            <input type="text" placeholder="Name (Optional)"> <br/>
-            <textarea id="new_recommendation" cols="500" rows="10" placeholder="Message"></textarea>
+            <input type="text" id="senderName" placeholder="Name (Optional)"> <br/>
+            <input type="email" id="senderEmail" placeholder="Your Email (Optional)"> <br/>
+            <textarea id="message" cols="500" rows="10" placeholder="Message" required></textarea>
             <div class="flex_center">
-                <button id="recommend_btn" onclick="addRecommendation()">Submit</button>
+                <button id="recommend_btn" type="submit">Submit</button>
             </div>
         </fieldset>
-    </div>
+    </form>
 </section>
 
 <div class="iconbutton">
@@ -226,5 +225,31 @@
     <h3><!-- Add appropriate text here--></h3>
     <button onclick="showPopup(false)">Ok</button>
 </div>
+
+<script>
+function sendEmail(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('senderName').value || 'Anonymous';
+    const senderEmail = document.getElementById('senderEmail').value || 'No email provided';
+    const message = document.getElementById('message').value;
+    
+    // Create the mailto URL
+    const mailtoLink = `mailto:frogmanjun621@gmail.com?subject=Portfolio Recommendation from ${name}&body=${encodeURIComponent(
+        `Name: ${name}\nEmail: ${senderEmail}\n\nMessage:\n${message}`
+    )}`;
+    
+    // Open the user's default email client
+    window.location.href = mailtoLink;
+    
+    // Clear the form
+    document.getElementById('recommendationForm').reset();
+    
+    // Show success message
+    const popup = document.getElementById('popup');
+    popup.querySelector('h3').textContent = 'Thank you for your recommendation!';
+    showPopup(true);
+}
+</script>
 </body>
 </html>
