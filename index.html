@@ -3,42 +3,44 @@
 <head>
     <title>Junichi Koizumi - Portfolio</title>
     <link rel="stylesheet" href="./style.css"/>
-    
+
     <!-- Load EmailJS from CDN -->
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script type="text/javascript">
-      (function(){
-        emailjs.init("nlxpgQqCpfN2MOxB7"); // Replace with your EmailJS user ID
-      })();
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function(){
+    emailjs.init("nlxpgQqCpfN2MOxB7"); // Replace with your EmailJS public key
+  })();
 
-      function sendEmail(e) {
-        e.preventDefault();
-        
-        const templateParams = {
-          from_name: document.getElementById('senderName').value || 'Anonymous',
-          from_email: document.getElementById('senderEmail').value || 'No email provided',
-          message: document.getElementById('message').value
-        };
-        
-        emailjs.send('service_0cfy4ek', 'template_ycr633p', templateParams)
-        .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
-          const popup = document.getElementById('popup');
-          popup.querySelector('h3').textContent = 'Thank you for your recommendation!'; // Update the popup message
-          showPopup(true); // Show the popup
-        }, function(error) {
-          console.log('FAILED...', error);
-        });
-        
-        // Clear the form
-        document.getElementById('recommendationForm').reset();
-      };
+  function sendEmail(e) {
+    e.preventDefault();
+    
+    const templateParams = {
+      from_name: document.getElementById('senderName').value || 'Anonymous',
+      from_email: document.getElementById('senderEmail').value || 'No email provided',
+      message: document.getElementById('message').value
+    };
+    
+    emailjs.send('service_0cfy4ek', 'template_ycr633p', templateParams)
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+      const popup = document.getElementById('popup');
+      popup.querySelector('h3').textContent = 'Thank you for your recommendation!'; // Update the popup message
+      showPopup(true); // Show the popup
+    }, function(error) {
+      console.log('FAILED...', error);
+    });
+    
+    // Clear the form
+    document.getElementById('recommendationForm').reset();
+  }
 
-      function showPopup(show) {
-          const popup = document.getElementById('popup');
-          popup.style.display = show ? 'flex' : 'none'; // Show or hide the popup
-      }
-    </script>
+  function showPopup(show) {
+    const popup = document.getElementById('popup');
+    popup.style.display = show ? 'flex' : 'none'; // Show or hide the popup
+  }
+</script>
+
+    
 </head>
 
 <body style = "background-color:darkseagreen">
