@@ -337,7 +337,7 @@ button:hover {
 }
 
 #resume img {
-    max-width: 80%;            /* Ensures the image doesn't overflow horizontally */
+    max-width: 100%;            /* Ensures the image doesn't overflow horizontally */
     height: auto;              /* Maintain aspect ratio */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
