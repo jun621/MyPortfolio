@@ -330,13 +330,14 @@ button:hover {
 }
 /* Resume */ 
 #resume {
-    display: flex;            /* Use Flexbox to center */
-    justify-content: center;  /* Horizontally center */
-    align-items: center;      /* Vertically center */
-    height: 100vh;            /* Set height to full viewport for vertical centering */
+    display: flex;             /* Flexbox for centering */
+    justify-content: center;   /* Horizontal centering */
+    align-items: center;       /* Vertical centering */
+    height: 100vh;             /* Take up full viewport height */
 }
 
 #resume img {
-    max-width: 100%;          /* Ensures the image fits within the container */
-    height: auto;             /* Maintain aspect ratio */
+    max-width: 80%;            /* Ensures the image doesn't overflow horizontally */
+    height: auto;              /* Maintain aspect ratio */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
