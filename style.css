@@ -328,3 +328,15 @@ button:hover {
   text-align: center;
   cursor: pointer;
 }
+/* Resume */ 
+#resume {
+    display: flex;            /* Use Flexbox to center */
+    justify-content: center;  /* Horizontally center */
+    align-items: center;      /* Vertically center */
+    height: 100vh;            /* Set height to full viewport for vertical centering */
+}
+
+#resume img {
+    max-width: 100%;          /* Ensures the image fits within the container */
+    height: auto;             /* Maintain aspect ratio */
+}
